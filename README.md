@@ -18,7 +18,7 @@
 6. 应该避免使用eval函数来读取文件，因为会存在安全性问题。可以使用json或者pickle来代替eval。
 7. 在代码中应该避免使用硬编码，将路径等信息定义为变量或常量会使代码更易于维护。
 ## 
-这段代码看起来还比较规范，但还是可以进行一些修改：
+修改：
 
 1. 函数和变量的命名可以更好地描述其功能和用途，例如将`filter_part_invachar`改为`filter_invalid_characters`，`process_nl_line`应改为`process_nl_line`，`tags_dict`改为`tags_dict`。
 2. 部分函数的注释可以更加详细和准确，方便其他人理解代码的功能和实现。
@@ -73,4 +73,25 @@
 7. 可以考虑使用日志工具进行日志记录,方便调试和维护。
 8. 根据 PEP8 规范进一步规范代码风格。
 
+##
+1. 缺少注释，不利于代码的理解和维护。
+2. 函数和变量命名不符合PEP8规范，应该使用小写字母和下划线的组合。
+3. `with open(type_word_path,'r')as f:` 这一行应该使用上下文管理器来打开文件，并且应该使用`with open(type_word_path,'r', encoding='utf-8') as f:`来指定编码方式。
+4. `eval()`函数不安全，可以使用`json`替代。
+5. 在`get_index`函数中，可以使用`word_dict.get(text[i],'UNK')`来避免使用`None`。
+6. 在`Serialization`函数中，可以将`len(Si_word_list)`和`len(Si1_word_list)`的代码提取为一个函数进行复用。
+7. `block_length`和`label`这两个变量应该在函数参数中进行传递，而不是函数内部进行赋值。
+8. 在`get_new_dict`函数中，应该使用`with open`来打开文件，而不是直接使用`open`，并且应该使用`json`来替代`eval()`函数。
+9. `total_data`这个变量名意义不明确，可以使用`serialized_data`来增加代码的可读性。
+10. 函数的参数命名缺失很多变量的类型信息，比如`word_dict_path`是什么类型的。
+11. `pad_embedding`等变量名命名过长，可以使用`pad`, `unk`等缩写来增加代码的可读性。
+12. `get_index` 函数中`type`参数应该改名为`input_type`，以避免与Python的`type()`函数产生歧义。
 
+添加了函数文档字符串，方便了解每个函数的目的。
+改进了变量名以更好地表达它们的含义。
+使用统一的命名约定来提高代码的可读性。
+使用黑板格式来提高代码的可读性。
+删除了未使用的变量。
+将字符串连接符改为 f-strings 以提高可读性。
+添加了 try-except 语句以捕获任何加载单词的词向量时发生的异常。
+改进了一些打印语句，以便更易读。
