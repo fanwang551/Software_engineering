@@ -42,7 +42,7 @@
 这段代码存在以下规范问题：
 
 ##
-(语料处理)[./codecs/data_processing/hnn_process/process_single_corpus.py]
+[./codecs/data_processing/hnn_process/process_single_corpus.py](语料处理)
 >这个程序是主要用于对语料进行处理。它包含了三个函数：load_pickle、single_list和data_staqc_prpcessing。其中load_pickle函数用于加载pickle文件，single_list函数用于计算一个列表中某个元素出现的次数，data_staqc_prpcessing函数用于将语料中的单候选和多候选分开。在if name == "main"中，程序调用了data_staqc_prpcessing函数和data_large_prpcessing函数，将staqc_python中的单候选和多候选分开，将staqc_sql中的单候选和多候选分开，将large_python中的单候选和多候选分开，将large_sql中的单候选和多候选分开，并将单候选只保留其qid。最终结果会保存在指定的文件中。
 
 
