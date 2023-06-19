@@ -8,7 +8,7 @@
 6. 代码中有一些无用的符号，例如制表符和多个空格。
 
 ## word_dict.py修改
-[sqlang_structured.py](./data_processing/hnn_process/sqlang_structured.py)
+[sqlang_structured.py](../codecs/data_processing/hnn_process/word_dict.py)
 >函数功能：构建初步词典和最终词典，它使用了两个语料库，其中包含Python和SQL代码的数据。程序使用了一些函数来加载和处理数据，包括load_json和load_pickle函数来加载JSON和pickle文件，get_vocab函数来构建词典，save_json函数来保存数据到JSON文件中，以及vocab_processing和final_vocab_processing函数来构建初步词典和最终词典。
 
 1. 在函数和变量命名时，应该遵循PEP8规范，即使用小写字母和下划线来分隔单词。
