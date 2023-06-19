@@ -8,7 +8,7 @@
 6. 代码中有一些无用的符号，例如制表符和多个空格。
 
 ## word_dict.py修改
-[sqlang_structured.py](../codecs/data_processing/hnn_process/word_dict.py)
+[word_dict.py](./codecs/data_processing/hnn_process/word_dict.py)
 >函数功能：构建初步词典和最终词典，它使用了两个语料库，其中包含Python和SQL代码的数据。程序使用了一些函数来加载和处理数据，包括load_json和load_pickle函数来加载JSON和pickle文件，get_vocab函数来构建词典，save_json函数来保存数据到JSON文件中，以及vocab_processing和final_vocab_processing函数来构建初步词典和最终词典。
 
 1. 在函数和变量命名时，应该遵循PEP8规范，即使用小写字母和下划线来分隔单词。
@@ -18,7 +18,8 @@
 5. 在代码中使用空格和缩进来使代码更易于阅读，应该遵循PEP8规范的缩进方式。
 6. 应该避免使用eval函数来读取文件，因为会存在安全性问题。可以使用json或者pickle来代替eval。
 7. 在代码中应该避免使用硬编码，将路径等信息定义为变量或常量会使代码更易于维护。
-## 
+## sqlang_structured.py修改
+[sqlang_structured.py](./codecs/data_processing/hnn_process/sqlang_structured.py)
 修改：
 
 1. 函数和变量的命名可以更好地描述其功能和用途，例如将`filter_part_invachar`改为`filter_invalid_characters`，`process_nl_line`应改为`process_nl_line`，`tags_dict`改为`tags_dict`。
@@ -28,7 +29,8 @@
 5. 运算符：括号内不应该加空格，括号后要加空格；如`word_pos in ['a', 'v', 'n', 'r']`应改为`word_pos in ['a', 'v', 'n', 'r']`；
 6. 字符串拼接：字符串拼接时，应使用加号或者格式化语法；如`line=' '.join(line)`应该改为`line = ' '.join(line)`；
 
-##
+## python_structured.py修改
+[python_structured.py](./codecs/data_processing/hnn_process/python_structured.py)
 1. 缺少函数、变量、参数的注释说明；
 2. 函数名应该使用小写字母，单词之间以下划线分隔，例如`python_parser`；
 3. 函数名要避免使用关键词或系统保留字，例如`revert_abbrev`应该改为`restore_abbrev`；
@@ -42,7 +44,7 @@
 11. 除了在被函数内部调用的模块，在其他地方最好避免使用 import *；
 这段代码存在以下规范问题：
 
-##
+## process_single_corpus.py修改
 [process_single_corpus.py](./codecs/data_processing/hnn_process/process_single_corpus.py)
 >这个程序是主要用于对语料进行处理。它包含了三个函数：load_pickle、single_list和data_staqc_prpcessing。其中load_pickle函数用于加载pickle文件，single_list函数用于计算一个列表中某个元素出现的次数，data_staqc_prpcessing函数用于将语料中的单候选和多候选分开。在if name == "main"中，程序调用了data_staqc_prpcessing函数和data_large_prpcessing函数，将staqc_python中的单候选和多候选分开，将staqc_sql中的单候选和多候选分开，将large_python中的单候选和多候选分开，将large_sql中的单候选和多候选分开，并将单候选只保留其qid。最终结果会保存在指定的文件中。
 
@@ -57,7 +59,8 @@
 6. 使用注释解释主要逻辑
 7. 抽取重复调用process_data()的逻辑到一个循环中
 
-##
+## getStru2Vec.py 修改
+[getStru2Vec.py](./codecs/data_processing/hnn_process/getStru2Vec.py)
 1. 缺少注释。这个程序虽然不算很复杂,但是注释还是很重要的,可以帮助其他人理解代码逻辑。
 2. 命名不规范。像 split_num 这种变量名不太明显,可以改成更有意义的名称,比如 batch_size。某些 magic number 也可以提取成常量,比如 words_top = 100。
 3. 重复代码太多。parse_python 和 parse_sqlang 这两个函数有很多重复的逻辑,可以提取出来放在一个公共函数中。
@@ -74,7 +77,8 @@
 7. 可以考虑使用日志工具进行日志记录,方便调试和维护。
 8. 根据 PEP8 规范进一步规范代码风格。
 
-##
+## embddings_process.py 修改
+[embddings_process.py](./codecs/data_processing/hnn_process/embddings_process.py)
 1. 缺少注释，不利于代码的理解和维护。
 2. 函数和变量命名不符合PEP8规范，应该使用小写字母和下划线的组合。
 3. `with open(type_word_path,'r')as f:` 这一行应该使用上下文管理器来打开文件，并且应该使用`with open(type_word_path,'r', encoding='utf-8') as f:`来指定编码方式。
