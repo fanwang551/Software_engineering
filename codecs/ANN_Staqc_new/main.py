@@ -1,5 +1,4 @@
 from __future__ import print_function
-
 import os
 import tensorflow as tf
 import sys
@@ -12,10 +11,8 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(name)s: %(levelname)s: %(message)s")
 
-
 from sklearn.metrics import *
 from configs import *
-
 from models import CodeMF
 #from models_no_bidi_SA import CodeMF
 #from models_no_SA import CodeMF
@@ -373,7 +370,7 @@ if __name__ == '__main__':
         StandoneCode.load_model_epoch(model, 83, 0.25, 0.25, 0.25, 0.25, 0.0006)
         # 测试集评估
         StandoneCode.eval(model, test_path)
-    #for d in np.arange(0.49,0.51,0.01):
+
 
 
 
