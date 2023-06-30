@@ -177,3 +177,16 @@
 18. 在`if __name__ == '__main__':`语句中，`model.build()`应该改为`model.build_model()`，因为没有定义`build`方法。
 19. 在`if __name__ == '__main__':`语句中，`StandoneCode.load_model_epoch(model, 121, 0.5, 0.5, 0.5, 0.5, 0.0006)`和`StandoneCode.load_model_epoch(model, 83, 0.25, 0.25, 0.25, 0.25, 0.0006)`语句中的参数顺序应该改为`d12, d3, d4, d5, r`。
 20. 在`if __name__ == '__main__':`语句中，`StandoneCode.eval(model, test_path)`语句中，`test_path`应该改为`dev_path`，以评估开发集而不是测试集。
+
+# MultiHeadAttention.py
+[MultiHeadAttention.py](./codecs/ANN_Staqc_new/hnn/MultiHeadAttention.py)
+1. 代码中导入了重复的库，例如tensorflow和numpy被导入了两次。
+2. 代码中定义了一些不必要的变量，例如`self.intensity`和`self.attention`在`ScaledDotProductAttention`类中被定义，但没有被使用。
+3. 类名`MultiHeadAttention_`不符合Python的命名规范，应该使用驼峰命名法，即`MultiHeadAttention`。
+4. 缺少注释来解释代码的功能和逻辑。
+5. 没有提供示例代码的用法和预期输出，导致阅读代码时缺少上下文信息。
+6. 代码中使用了硬编码的数字，例如`head_num`和`feature_dim`，应该使用变量或参数来表示这些值，以增加代码的可读性和灵活性。
+7. 缺少异常处理，例如在`build`方法中没有处理输入维度不匹配的情况。
+8. 代码中的一些命名不够清晰和描述性，例如`q`、`k`、`v`等变量名，可以使用更具描述性的名称来增加代码的可读性。
+9. 使用了混合的导入风格，有些地方使用了`import tensorflow as tf`，有些地方使用了`from tensorflow import *`，应该保持一致性并使用标准的导入风格。
+10. 缺少对代码中使用的数学公式和算法的解释，使得阅读代码时不容易理解其背后的原理和目的。
