@@ -155,3 +155,25 @@
 20. 函数`dice_loss()`中的`K.ones_like()`函数的参数类型不正确，应该是`tf.shape(y_pred)`，而不是`K.shape(y_pred)`。
 
 
+# mian.py
+[main.py](./codecs/ANN_Staqc_new/hnn/main.py)
+1. 缺少必要的import语句，例如`import sys`和`import pickle`。
+2. 在`import logging`之后没有设置logging的级别和格式。
+3. 在代码的开头使用了`from __future__ import print_function`，这是为了兼容Python 2和Python 3的写法。但是在该程序中，并没有使用到Python 2的特性，因此可以将该行代码删除。
+4. 在代码中有一些被注释掉的import语句，这些语句应该被删除，以免混淆读者。
+5. 在代码中有一些被注释掉的设置随机种子的语句，这些语句应该被删除，因为已经在代码中使用了固定的种子值。
+6. `set_session`函数在导入时并未使用，因此可以删除。
+7. 在`StandoneCode`类的构造函数中，存在一个不规范的命名，应该将`conf`改为`configs`。
+8. 在`StandoneCode`类中，`self._buckets_text_max`和`self._buckets_code_max`的计算方式可以简化，可以直接使用`max(self._buckets, key=lambda x: x[0])`和`max(self._buckets, key=lambda x: x[2])`。
+9. 在`StandoneCode`类中的`load_pickle`函数中，应该将`return word_dict`改为`return word_dict`。
+10. 在`StandoneCode`类中的`pad`函数中，应该将`return pad_sequences(data, maxlen=len, padding='post', truncating='post', value=0)`改为`return pad_sequences(data, maxlen=len, padding='post', truncating='post', value=0)`。
+11. `StandoneCode`类中的`get_data`函数中存在一些错误，例如`text_S1`和`text_S2`应该使用`extend`方法而不是`append`方法，`id`应该改为`ids`。
+12. 在`StandoneCode`类中的`train`函数中，`hist = model.fit([np.array(text_S1), np.array(text_S2), np.array(code), np.array(queries)], np.array(labels), shuffle=True, epochs=1, batch_size=batch_size)`语句中，`hist`并未使用，可以将其删除。
+13. `StandoneCode`类中的`valid`函数中，应该将`return acc, f1,recall,precision,loss`改为`return acc, f1, recall, precision, loss`。
+14. `parse_args`函数中，`parser.add_argument("--verbose",action="store_true", default=True, help="Be verbose")`语句中，`action="store_true"`应该改为`action="store_false"`，因为默认为True，所以在调用时不需要加上`--verbose`参数来开启。
+15. 在`if __name__ == '__main__':`语句中，`conf = get_config(args.train)`应该改为`conf = get_config(args.train.lower())`，因为`get_config`函数接受的参数是小写的字符串。
+16. 在`if __name__ == '__main__':`语句中，`model.params_adjust(dropout1=drop1, dropout2=drop2, dropout3=drop3, dropout4=drop4, dropout5=drop5, Regularizer=round(r, 5), num=8, seed=42)`语句中，`Regularizer`应该改为`regularizer`。
+17. 在`if __name__ == '__main__':`语句中，`conf['training_params']['regularizer'] = round(r, 5) + 1`语句应该删除，因为已经在上一行设置过了。
+18. 在`if __name__ == '__main__':`语句中，`model.build()`应该改为`model.build_model()`，因为没有定义`build`方法。
+19. 在`if __name__ == '__main__':`语句中，`StandoneCode.load_model_epoch(model, 121, 0.5, 0.5, 0.5, 0.5, 0.0006)`和`StandoneCode.load_model_epoch(model, 83, 0.25, 0.25, 0.25, 0.25, 0.0006)`语句中的参数顺序应该改为`d12, d3, d4, d5, r`。
+20. 在`if __name__ == '__main__':`语句中，`StandoneCode.eval(model, test_path)`语句中，`test_path`应该改为`dev_path`，以评估开发集而不是测试集。
