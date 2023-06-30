@@ -133,22 +133,25 @@
 
 # model.py
 [models.py](./codecs/ANN_Staqc_new/hnn/models.py)
-1. 删除了未使用的变量`self.train_model`，避免了代码中出现不必要的变量。
-2. 重命名了变量`self.text_embbeding`为`self.text_embedding`，以修正拼写错误。
-3. 重命名了变量`emnedding_layer`为`embedding_layer`，以保持命名一致性。
-4. 删除了变量`P1, P2, Pc, Pq`，这些变量在代码中没有被使用。
-5. 修改了函数名`mycrossentropy`为`my_crossentropy`，以符合Python函数命名规范。
-6. 修改了函数名`myloss`为`my_loss`，以符合Python函数命名规范。
-7. 修改了函数名`__init__`为`__init__`，以符合Python构造函数的命名规范。
-8. 修改了函数名`params_adjust`为`params_adjust`，以符合Python函数命名规范。
-9. 修改了函数名`build`为`build`，以符合Python函数命名规范。
-10. 修改了函数名`compile`为`compile`，以符合Python函数命名规范。
-11. 修改了函数名`fit`为`fit`，以符合Python函数命名规范。
-12. 修改了函数名`predict`为`predict`，以符合Python函数命名规范。
-13. 修改了函数名`save`为`save`，以符合Python函数命名规范。
-14. 修改了函数名`load`为`load`，以符合Python函数命名规范。
-15. 修改了函数名`concat`为`concat`，以符合Python函数命名规范。
-16. 修改了函数名`dicecoef`为`dice_coef`，以符合Python函数命名规范。
-17. 修改了函数名`diceloss`为`dice_loss`，以符合Python函数命名规范。
-18. 修改了函数名`loss`为`example_loss`，以更清晰地表示函数的目的。
-19. 修改了函数名`my_loss`为`my_loss`，以符合Python函数命名规范。
+1. 代码中有很多导入的包没有使用，比如`import os`，`import logging`等。
+2. 在代码的开头使用了`__future__`模块来导入一些新版本的功能，但是在后面并没有使用这些新功能，比如`print_function`和`absolute_import`。
+3. 在导入`tensorflow`相关模块时，有的使用了`from tensorflow.keras.models import Model`，有的使用了`import tensorflow as tf`，不够统一。
+4. 在导入自定义的模块时，比如`concactLayer`，`mediumlayer`，`attention_layer`等，应该使用绝对路径或者相对路径来导入，而不是直接使用模块名。
+5. 在代码中有多处使用了`print()`函数来打印调试信息，这样的方式不够规范，应该使用日志模块来记录日志信息。
+6. 类的命名不符合规范，应该使用大写字母开头的驼峰命名法，比如`CodeMF`应该改为`CodeMF`。
+7. 函数命名不符合规范，应该使用小写字母开头的下划线命名法，比如`params_adjust`应该改为`params_adjust`。
+8. 代码中有很多硬编码的参数，比如`self.text_length = 100`，`self.queries_length = 25`，这些参数应该通过配置文件或者函数参数来传递。
+9. 在代码中定义了很多类成员变量，但是并没有使用。
+10. 函数`build()`中的注释不够准确，应该描述函数的功能和输入输出。
+11. 函数`fit()`中的参数`x`和`y`的类型没有指定。
+12. 函数`save()`和`load()`中的参数`class_model_file`的类型没有指定。
+13. 函数`mycrossentropy()`和`dice_coef()`中的参数`e`的含义没有明确说明。
+14. 在函数`example_loss()`中使用了`tf.compat.v1.nn.softmax_cross_entropy_with_logits()`函数，但是这个函数已经被弃用了，应该使用`tf.nn.softmax_cross_entropy_with_logits()`。
+15. 函数`example_loss()`中的`reduce_sum()`函数的参数类型不正确，应该是`axis=0`，而不是`axis=1`。
+16. 函数`dice_loss()`中的`dice_coef()`函数的参数`p1`，`p2`，`p3`，`p4`没有在函数中使用。
+17. 在函数`dice_loss()`中定义了内部函数`dice()`，但是没有在函数中使用。
+18. 函数`dice_loss()`中的`categorical_crossentropy()`函数的参数类型不正确，应该是`from_logits=True`，而不是`from_logits=False`。
+19. 函数`dice_loss()`中的`K.categorical_crossentropy()`函数的参数类型不正确，应该是`axis=1`，而不是`axis=0`。
+20. 函数`dice_loss()`中的`K.ones_like()`函数的参数类型不正确，应该是`tf.shape(y_pred)`，而不是`K.shape(y_pred)`。
+
+
